@@ -20,7 +20,7 @@ featureFlags:
         default:
           onVariation: "false"
           offVariation: "false"
-        state: "off"
+        state: "on"
   - flag:
       name: My_Test_Flag
       identifier: My_Test_Flag
