@@ -1,0 +1,46 @@
+featureFlags:
+  flags:
+  - flag:
+      name: myfirstff
+      identifier: myfirstff
+      description: ""
+      permanent: false
+      spec:
+        type: boolean
+        default:
+          onVariation: "false"
+          offVariation: "false"
+        variations:
+        - identifier: "true"
+          value: "true"
+        - identifier: "false"
+          value: "false"
+      environments:
+      - identifier: myEnv
+        default:
+          onVariation: "false"
+          offVariation: "false"
+        state: "off"
+  - flag:
+      name: My_Test_Flag
+      identifier: My_Test_Flag
+      description: ""
+      permanent: false
+      spec:
+        type: boolean
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        variations:
+        - identifier: "true"
+          value: "true"
+        - identifier: "false"
+          value: "false"
+      environments:
+      - identifier: myEnv
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        state: "off"
+  projectIdentifier: default_project
+  orgIdentifier: default
