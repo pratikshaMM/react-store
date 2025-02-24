@@ -21,5 +21,9 @@ featureFlags:
           onVariation: "true"
           offVariation: "false"
         state: "on"
+        targetRules:
+        - targets:
+          - identifier: myfirstff
+          variation: "true"
   projectIdentifier: default_project
   orgIdentifier: default
