@@ -29,13 +29,7 @@ featureFlags:
         rules:
         - priority: 2
           serve:
-            distribution:
-              bucketBy: host
-              variations:
-              - weight: 50
-                variation: "true"
-              - weight: 50
-                variation: "false"
+            serveVariation: "false"
           clauses:
           - attribute: ""
             op: segmentMatch
