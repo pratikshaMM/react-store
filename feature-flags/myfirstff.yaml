@@ -71,5 +71,26 @@ featureFlags:
           onVariation: Light_Mode
           offVariation: Dark_Mode
         state: "on"
+        rules:
+        - priority: 0
+          serve:
+            distribution:
+              bucketBy: identifier
+              variations:
+              - weight: 60
+                variation: Light_Mode
+              - weight: 30
+                variation: Dark_Mode
+              - weight: 10
+                variation: Blue_Theme
+          clauses:
+          - attribute: ""
+            op: segmentMatch
+            values:
+            - myteam
+        targetRules:
+        - targets:
+          - identifier: theme_variation
+          variation: Blue_Theme
   projectIdentifier: default_project
   orgIdentifier: default
