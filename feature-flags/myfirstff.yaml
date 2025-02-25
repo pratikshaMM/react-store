@@ -68,7 +68,7 @@ featureFlags:
         state: "off"
       - identifier: myEnv
         default:
-          onVariation: Dark_Mode
+          onVariation: Blue_Theme
           offVariation: Dark_Mode
         state: "on"
         rules:
