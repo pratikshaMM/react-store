@@ -87,6 +87,6 @@ featureFlags:
           - attribute: ""
             op: segmentMatch
             values:
-            - myteam
+            - themecolors
   projectIdentifier: default_project
   orgIdentifier: default
