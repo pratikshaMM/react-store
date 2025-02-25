@@ -88,9 +88,5 @@ featureFlags:
             op: segmentMatch
             values:
             - myteam
-        targetRules:
-        - targets:
-          - identifier: theme_variation
-          variation: Blue_Theme
   projectIdentifier: default_project
   orgIdentifier: default
