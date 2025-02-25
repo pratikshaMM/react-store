@@ -39,5 +39,37 @@ featureFlags:
         - targets:
           - identifier: myfirstff
           variation: "false"
+  - flag:
+      name: theme_variation
+      identifier: theme_variation
+      description: ""
+      permanent: false
+      spec:
+        type: string
+        default:
+          onVariation: Dark_Mode
+          offVariation: Dark_Mode
+        variations:
+        - identifier: Light_Mode
+          value: light
+        - identifier: Dark_Mode
+          value: dark
+        - identifier: Blue_Theme
+          value: blue
+      tags:
+      - tag:
+          name: basic
+          identifier: basic
+      environments:
+      - identifier: test
+        default:
+          onVariation: Dark_Mode
+          offVariation: Dark_Mode
+        state: "off"
+      - identifier: myEnv
+        default:
+          onVariation: Dark_Mode
+          offVariation: Dark_Mode
+        state: "off"
   projectIdentifier: default_project
   orgIdentifier: default
