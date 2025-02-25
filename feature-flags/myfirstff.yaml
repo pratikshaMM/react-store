@@ -23,7 +23,7 @@ featureFlags:
         state: "off"
       - identifier: myEnv
         default:
-          onVariation: "true"
+          onVariation: "false"
           offVariation: "false"
         state: "on"
         rules:
