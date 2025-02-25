@@ -26,19 +26,6 @@ featureFlags:
           onVariation: "true"
           offVariation: "false"
         state: "on"
-        rules:
-        - priority: 2
-          serve:
-            serveVariation: "false"
-          clauses:
-          - attribute: ""
-            op: segmentMatch
-            values:
-            - myteam
-        targetRules:
-        - targets:
-          - identifier: myfirstff
-          variation: "false"
   - flag:
       name: theme_variation
       identifier: theme_variation
