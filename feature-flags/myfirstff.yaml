@@ -23,9 +23,9 @@ featureFlags:
         state: "off"
       - identifier: myEnv
         default:
-          onVariation: "false"
+          onVariation: "true"
           offVariation: "false"
-        state: "on"
+        state: "off"
         rules:
         - priority: 2
           serve:
