@@ -30,7 +30,7 @@ featureFlags:
         - priority: 2
           serve:
             distribution:
-              bucketBy: identifier
+              bucketBy: host
               variations:
               - weight: 50
                 variation: "true"
