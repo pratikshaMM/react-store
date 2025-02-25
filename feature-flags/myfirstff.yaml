@@ -38,6 +38,6 @@ featureFlags:
         targetRules:
         - targets:
           - identifier: myfirstff
-          variation: "true"
+          variation: "false"
   projectIdentifier: default_project
   orgIdentifier: default
