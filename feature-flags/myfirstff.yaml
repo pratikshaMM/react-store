@@ -1,7 +1,7 @@
 featureFlags:
   flags:
   - flag:
-      name: myfirstff
+      name: header-placement
       identifier: myfirstff
       description: ""
       permanent: false
