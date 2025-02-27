@@ -64,9 +64,9 @@ featureFlags:
             distribution:
               bucketBy: identifier
               variations:
-              - weight: 0
+              - weight: 80
                 variation: Light_Mode
-              - weight: 100
+              - weight: 20
                 variation: Dark_Mode
               - weight: 0
                 variation: Blue_Theme
