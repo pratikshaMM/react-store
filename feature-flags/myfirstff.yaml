@@ -58,23 +58,6 @@ featureFlags:
           onVariation: Blue_Theme
           offVariation: Dark_Mode
         state: "on"
-        rules:
-        - priority: 0
-          serve:
-            distribution:
-              bucketBy: identifier
-              variations:
-              - weight: 80
-                variation: Light_Mode
-              - weight: 20
-                variation: Dark_Mode
-              - weight: 0
-                variation: Blue_Theme
-          clauses:
-          - attribute: ""
-            op: segmentMatch
-            values:
-            - themecolors
         targetRules:
         - targets:
           - identifier: UID2234
