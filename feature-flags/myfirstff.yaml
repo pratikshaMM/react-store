@@ -60,7 +60,7 @@ featureFlags:
         state: "on"
         targetRules:
         - targets:
-          - identifier: UID2234
+          - identifier: theme_variation
           variation: Dark_Mode
   projectIdentifier: default_project
   orgIdentifier: default
