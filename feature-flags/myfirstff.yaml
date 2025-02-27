@@ -75,5 +75,9 @@ featureFlags:
             op: segmentMatch
             values:
             - themecolors
+        targetRules:
+        - targets:
+          - identifier: UID2234
+          variation: Dark_Mode
   projectIdentifier: default_project
   orgIdentifier: default
