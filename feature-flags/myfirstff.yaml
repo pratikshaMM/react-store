@@ -61,7 +61,15 @@ featureFlags:
         rules:
         - priority: 0
           serve:
-            serveVariation: Blue_Theme
+            distribution:
+              bucketBy: identifier
+              variations:
+              - weight: 90
+                variation: Light_Mode
+              - weight: 0
+                variation: Dark_Mode
+              - weight: 10
+                variation: Blue_Theme
           clauses:
           - attribute: ""
             op: segmentMatch
