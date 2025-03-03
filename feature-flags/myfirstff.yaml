@@ -58,5 +58,14 @@ featureFlags:
           onVariation: Blue_Theme
           offVariation: Dark_Mode
         state: "off"
+        rules:
+        - priority: 0
+          serve:
+            serveVariation: Light_Mode
+          clauses:
+          - attribute: ""
+            op: segmentMatch
+            values:
+            - themecolors
   projectIdentifier: default_project
   orgIdentifier: default
