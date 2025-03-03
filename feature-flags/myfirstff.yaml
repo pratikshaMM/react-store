@@ -18,7 +18,7 @@ featureFlags:
       environments:
       - identifier: test
         default:
-          onVariation: "false"
+          onVariation: "true"
           offVariation: "false"
         state: "off"
       - identifier: myEnv
