@@ -62,7 +62,7 @@ featureFlags:
         - priority: 0
           serve:
             distribution:
-              bucketBy: identifier
+              bucketBy: tenant
               variations:
               - weight: 50
                 variation: Light_Mode
