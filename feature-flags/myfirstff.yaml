@@ -21,11 +21,6 @@ featureFlags:
           onVariation: "false"
           offVariation: "false"
         state: "off"
-      - identifier: prod
-        default:
-          onVariation: "false"
-          offVariation: "false"
-        state: "off"
       - identifier: test
         default:
           onVariation: "true"
@@ -59,11 +54,6 @@ featureFlags:
           identifier: basic
       environments:
       - identifier: development
-        default:
-          onVariation: Dark_Mode
-          offVariation: Dark_Mode
-        state: "off"
-      - identifier: prod
         default:
           onVariation: Dark_Mode
           offVariation: Dark_Mode
