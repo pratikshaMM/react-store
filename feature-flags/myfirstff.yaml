@@ -58,9 +58,5 @@ featureFlags:
           onVariation: Blue_Theme
           offVariation: Dark_Mode
         state: "on"
-        targetRules:
-        - targets:
-          - identifier: theme_variation
-          variation: Dark_Mode
   projectIdentifier: default_project
   orgIdentifier: default
