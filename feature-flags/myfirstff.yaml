@@ -26,10 +26,6 @@ featureFlags:
           onVariation: "true"
           offVariation: "false"
         state: "on"
-        targetRules:
-        - targets:
-          - identifier: UID1234
-          variation: "false"
   - flag:
       name: theme_variation
       identifier: theme_variation
