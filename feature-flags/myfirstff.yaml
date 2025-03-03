@@ -61,7 +61,7 @@ featureFlags:
         rules:
         - priority: 0
           serve:
-            serveVariation: Light_Mode
+            serveVariation: Blue_Theme
           clauses:
           - attribute: ""
             op: segmentMatch
