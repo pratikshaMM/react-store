@@ -78,5 +78,9 @@ featureFlags:
           onVariation: Light_Mode
           offVariation: Dark_Mode
         state: "on"
+        targetRules:
+        - targets:
+          - identifier: UID2234
+          variation: Blue_Theme
   projectIdentifier: default_project
   orgIdentifier: default
