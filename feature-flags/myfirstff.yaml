@@ -65,25 +65,8 @@ featureFlags:
         state: "off"
       - identifier: myEnv
         default:
-          onVariation: Blue_Theme
+          onVariation: Light_Mode
           offVariation: Dark_Mode
         state: "on"
-        rules:
-        - priority: 0
-          serve:
-            distribution:
-              bucketBy: tenant
-              variations:
-              - weight: 50
-                variation: Light_Mode
-              - weight: 0
-                variation: Dark_Mode
-              - weight: 50
-                variation: Blue_Theme
-          clauses:
-          - attribute: ""
-            op: segmentMatch
-            values:
-            - themecolors
   projectIdentifier: default_project
   orgIdentifier: default
