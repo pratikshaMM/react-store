@@ -67,6 +67,6 @@ featureFlags:
         default:
           onVariation: Light_Mode
           offVariation: Dark_Mode
-        state: "on"
+        state: "off"
   projectIdentifier: default_project
   orgIdentifier: default
