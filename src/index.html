@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Feature Flags</title>
+</head>
+<body>
+    <script type="module">
+        import { initialize, SDKEvent } from "https://unpkg.com/@harnessio/ff-javascript-client-sdk@latest/dist/index.esm.js";
+
+        // Define the target
+        const target = {
+            identifier: "UID1234",
+            name: "UserName",
+            attributes: {
+                tenant: "Tenant1",
+                version: "1.0"
+            }
+        };
+
+        // Initialize client with SDK key and target
+        const client = initialize(
+            "670c420d-6085-442c-9276-840800fa8122", // Replace with your actual SDK Key
+            target, // Ensure target is passed
+            { baseUrl: "https://config.ff.harness.io/api/1.0", eventUrl: "https://events.ff.harness.io/api/1.0" }
+        );
+
+        // Listen for events
+        client.on(SDKEvent.READY, (flags) => {
+            console.log("READY", flags);
+        });
+
+        client.on(SDKEvent.CHANGED, (changeInfo) => {
+            console.log("CHANGED", changeInfo);
+        });
+
+    </script>
+</body>
+</html>

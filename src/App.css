@@ -14,10 +14,64 @@
  * limitations under the License.
  */
 
-.App {
+ .App {
   text-align: center;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+.App.Left {
+  text-align: left;
+}
+
+/* Light Theme */
+.app-container.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.app-container.light .App-header {
+  background-color: #f8f9fa;
+  color: #000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.app-container.light .App-header a {
+  color: #000;
+}
+
+/* Dark Theme */
+.app-container.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app-container.dark .App-header {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.app-container.dark .App-header a {
+  color: #ffffff;
+}
+
+/* Blue Theme */
+.app-container.blue {
+  background-color: #007BFF;
+  color: #ffffff;
+}
+
+.app-container.blue .App-header {
+  background-color: #0056b3;
+  color: #ffffff;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.app-container.blue .App-header a {
+  color: #ffffff;
+}
+
+/* Existing styles */
 .heading {
   flex-grow: 1;
 }
@@ -31,15 +85,12 @@
   position: fixed;
   top: 0;
   text-align: center;
-  background-color: #ffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  color: #000;
   width: 100vw;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .App-header .Header {
@@ -57,10 +108,9 @@
 
 .App-header a {
   text-decoration: none;
-  color: #000;
 }
 
-.App-header>.Navigation {
+.App-header > .Navigation {
   display: flex;
   flex-direction: row;
   font-size: 13px;
@@ -68,22 +118,22 @@
   margin: 0;
 }
 
-.App-header>.Navigation li {
+.App-header > .Navigation li {
   list-style: none;
   margin: 10px;
   padding: 2px;
 }
 
-.App-header>.Navigation a {
+.App-header > .Navigation a {
   display: block;
   padding: 2px;
   font-weight: 500;
 }
 
-.App-header>.Navigation a.active {
-  border-bottom: 2px solid #000;
+.App-header > .Navigation a.active {
+  border-bottom: 2px solid currentColor;
 }
 
-.App-header+* {
+.App-header + * {
   margin-top: 80px;
 }

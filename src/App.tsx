@@ -1,19 +1,4 @@
-/*
- * Copyright 2022 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+//@ts-nocheck
 import { useEffect, useMemo, useState } from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
@@ -27,48 +12,90 @@ import List from './Store/List';
 
 import { CartContext } from './Store/CartContext';
 import { StoreData } from './Store/StoreData';
+import ThemeWrapper from './Store/ThemeWrapper';
 import { CategoryDetails } from './interfaces/CategoryDetails';
 import { CartItemDetails } from './interfaces/CartItemDetails';
-
+import { initialize, Event } from '@harnessio/ff-javascript-client-sdk';
 import './App.css';
 
-/**Builds the base React app */
 function App() {
-  // Products, cart, and other shopping info
   const storeData = useMemo(() => new StoreData(), []);
 
-  // T-shirt categories
-  const [categories, setCategories] = useState([] as CategoryDetails[]);
-
-  // Current user's shopping cart
+  const [categories, setCategories] = useState<CategoryDetails[]>([]);
   const [cart, setCart] = useState(storeData.getCart());
+  const [featureFlags, setFeatureFlags] = useState({});
 
-  // Updates the user's shopping cart
+  useEffect(() => {
+    storeData.getCategories().then(data => setCategories(data));
+  }, [storeData]);
+
   function updateCart(cart: CartItemDetails[]) {
     storeData.setCart(cart);
     setCart(cart);
   }
 
-  // Create list of categories and details
   useEffect(() => {
-    storeData.getCategories().then(data => setCategories(data));
-  }, [storeData]);
+    const target = {
+      identifier: "UID2234", // Unique user ID
+      name: "User2", // Display name
+      attributes: {
+        tenant: "Tenant2",
+        version: "2.0",
+        role: "admin", // Example of extra attributes
+      }
+    };
+  
+    // Initialize Harness SDK with the target
+    const cf = initialize(
+      '670c420d-6085-442c-9276-840800fa8122', // Replace with your actual SDK key
+      target,
+      { baseUrl: 'https://config.ff.harness.io/api/1.0', eventUrl: 'https://events.ff.harness.io/api/1.0' }
+    );
+  
+    // Listen for SDK events using 'Event' instead of 'SDKEvent'
+    cf.on(Event.READY, flags => {
+      console.log("SDK is READY", flags);
+      setFeatureFlags(flags);
+    });
+  
+    cf.on(Event.CHANGED, flagInfo => {
+      console.log("Feature Flag CHANGED", flagInfo);
+      if (flagInfo.deleted) {
+        setFeatureFlags(currentFeatureFlags => {
+          delete currentFeatureFlags[flagInfo.flag];
+          return { ...currentFeatureFlags };
+        });
+      } else {
+        setFeatureFlags(currentFeatureFlags => ({ ...currentFeatureFlags, [flagInfo.flag]: flagInfo.value }));
+      }
+    });
+  
+    return () => {
+      cf?.close();
+    };
+  }, []);
+  
 
-  // Create the router
+  let className = featureFlags.myfirstff ? 'App.Left' : 'App';
+
   return (
-    <CartContext.Provider value={{ cart, setCart: updateCart }}>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home categories={categories} />} />
-          <Route path="/list/:listId/:itemId" element={<ItemDetails />} />
-          <Route path="/list/:listId" element={<List categories={categories} />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/confirm" element={<Confirmation />} />
-        </Routes>
-      </BrowserRouter>
-    </CartContext.Provider>
+    <ThemeWrapper>
+      <CartContext.Provider value={{ cart, setCart: updateCart }}>
+        <BrowserRouter>
+          <div className={className}>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home categories={categories} />} />
+              <Route path="/list/:listId/:itemId" element={<ItemDetails />} />
+              <Route path="/list/:listId" element={<List categories={categories} />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/confirm" element={<Confirmation />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </CartContext.Provider>
+    </ThemeWrapper>
   );
 }
 
