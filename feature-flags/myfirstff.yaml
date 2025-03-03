@@ -57,7 +57,7 @@ featureFlags:
         default:
           onVariation: Blue_Theme
           offVariation: Dark_Mode
-        state: "off"
+        state: "on"
         rules:
         - priority: 0
           serve:
