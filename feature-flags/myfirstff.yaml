@@ -57,6 +57,6 @@ featureFlags:
         default:
           onVariation: Blue_Theme
           offVariation: Dark_Mode
-        state: "on"
+        state: "off"
   projectIdentifier: default_project
   orgIdentifier: default
